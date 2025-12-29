@@ -1,0 +1,12 @@
+# ===== DEV Profile - Local Development =====
+# Bu dosyayı kopyalayıp application-dev.properties olarak kaydet ve değerleri doldur
+
+# ===== MSSQL Database =====
+spring.datasource.url=jdbc:sqlserver://localhost\\SQLEXPRESS:1433;databaseName=sprintmate;encrypt=true;trustServerCertificate=true
+spring.datasource.username=your_username_here
+spring.datasource.password=your_password_here
+spring.datasource.driver-class-name=com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+# ===== Development Settings =====
+spring.jpa.show-sql=true
+logging.level.org.hibernate.SQL=DEBUG

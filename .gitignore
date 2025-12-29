@@ -3,6 +3,7 @@ PRD.md
 RULES.md
 CREATE_TABLES.sql
 .env
+**/application-dev.properties
 target/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
