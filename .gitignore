@@ -1,5 +1,8 @@
 HELP.md
 PRD.md
+RULES.md
+CREATE_TABLES.sql
+.env
 target/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
