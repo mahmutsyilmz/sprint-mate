@@ -15,18 +15,18 @@ import java.util.Map;
 /**
  * Health Check Controller
  * 
- * API'nin çalışıp çalışmadığını kontrol etmek için.
+ * To check if the API is running.
  */
 @RestController
 @RequestMapping("/api")
-@Tag(name = "Health", description = "API sağlık kontrolü endpoint'leri")
+@Tag(name = "Health", description = "API health check endpoints")
 public class HealthController {
 
     @GetMapping("/health")
-    @Operation(summary = "Health Check", description = "API'nin çalışıp çalışmadığını kontrol eder")
+    @Operation(summary = "Health Check", description = "Check if the API is running")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "API çalışıyor"),
-            @ApiResponse(responseCode = "500", description = "API çalışmıyor")
+            @ApiResponse(responseCode = "200", description = "API is running"),
+            @ApiResponse(responseCode = "500", description = "API is not running")
     })
     public ResponseEntity<Map<String, Object>> healthCheck() {
         return ResponseEntity.ok(Map.of(
