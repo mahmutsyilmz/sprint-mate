@@ -9,19 +9,5 @@ import java.util.UUID;
 
 @Repository
 public interface TaskRepository extends JpaRepository<Task, UUID> {
-
-    // Board için: Takımın tüm taskları statüye göre sıralı
-    List<Task> findByTeamIdOrderByStatusAscColumnOrderAsc(UUID teamId);
-
-    // Belirli statüdeki tasklar
-    List<Task> findByTeamIdAndStatus(UUID teamId, String status);
-
-    // Kullanıcıya atanmış tasklar
-    List<Task> findByAssignedUserId(UUID userId);
-
-    // Takımdaki toplam task sayısı
-    long countByTeamId(UUID teamId);
-
-    // Tamamlanan task sayısı (XP hesaplaması için)
-    long countByTeamIdAndStatus(UUID teamId, String status);
+    List<Task> findByTeamId(UUID teamId);
 }

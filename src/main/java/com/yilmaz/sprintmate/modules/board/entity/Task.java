@@ -1,6 +1,8 @@
 package com.yilmaz.sprintmate.modules.board.entity;
 
 import com.yilmaz.sprintmate.modules.auth.entity.User;
+import com.yilmaz.sprintmate.modules.board.enums.TaskStatus;
+import com.yilmaz.sprintmate.modules.board.enums.TaskType;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
@@ -36,13 +38,15 @@ public class Task {
     @Column(columnDefinition = "NVARCHAR(MAX)")
     private String description;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "task_type", length = 20)
     @Builder.Default
-    private String taskType = "FEATURE"; // BUG, FEATURE, CHORE
+    private TaskType taskType = TaskType.FEATURE;
 
+    @Enumerated(EnumType.STRING)
     @Column(length = 20)
     @Builder.Default
-    private String status = "TODO"; // TODO, IN_PROGRESS, REVIEW, DONE
+    private TaskStatus status = TaskStatus.TODO;
 
     @Column(name = "column_order")
     @Builder.Default

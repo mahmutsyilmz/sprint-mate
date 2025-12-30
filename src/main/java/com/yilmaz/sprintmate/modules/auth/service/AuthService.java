@@ -3,6 +3,7 @@ package com.yilmaz.sprintmate.modules.auth.service;
 import com.yilmaz.sprintmate.modules.auth.dto.AuthResponse;
 import com.yilmaz.sprintmate.modules.auth.dto.UserDto;
 import com.yilmaz.sprintmate.modules.auth.entity.User;
+import com.yilmaz.sprintmate.modules.auth.enums.UserRole;
 import com.yilmaz.sprintmate.modules.auth.exception.UserNotFoundException;
 import com.yilmaz.sprintmate.modules.auth.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -79,7 +80,7 @@ public class AuthService {
      * @return Updated user
      */
     @Transactional
-    public UserDto updateUserRole(UUID userId, String role) {
+    public UserDto updateUserRole(UUID userId, UserRole role) {
         log.info("Updating role for user {} to {}", userId, role);
 
         User user = userRepository.findById(userId)

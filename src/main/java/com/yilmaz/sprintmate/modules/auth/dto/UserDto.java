@@ -41,7 +41,8 @@ public class UserDto {
                 .username(user.getUsername())
                 .email(user.getEmail())
                 .avatarUrl(user.getAvatarUrl())
-                .role(user.getRole())
+                // Convert Enum to String for API response
+                .role(user.getRole() != null ? user.getRole().name() : null)
                 .xpPoints(user.getXpPoints())
                 .githubId(user.getGithubId())
                 .build();
