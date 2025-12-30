@@ -1,6 +1,8 @@
 package com.yilmaz.sprintmate.modules.auth.entity;
 
+import com.yilmaz.sprintmate.modules.board.entity.Team;
 import jakarta.persistence.*;
+import com.yilmaz.sprintmate.modules.auth.enums.UserRole;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
@@ -39,8 +41,9 @@ public class User implements UserDetails {
     @Column(name = "avatar_url", length = 500)
     private String avatarUrl;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = true, length = 20)
-    private String role; // FRONTEND, BACKEND, null (if not selected)
+    private UserRole role; // FRONTEND, BACKEND, null (if not selected)
 
     @Column(name = "xp_points")
     @Builder.Default
@@ -57,6 +60,11 @@ public class User implements UserDetails {
     @Builder.Default
     private Boolean isActive = true;
 
+    // Relationship: One Team has Many Users
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "team_id")
+    private Team team;
+
     // UserDetails Implementation
 
     @Override
@@ -64,7 +72,7 @@ public class User implements UserDetails {
         if (role == null) {
             return List.of();
         }
-        return List.of(new SimpleGrantedAuthority("ROLE_" + role));
+        return List.of(new SimpleGrantedAuthority("ROLE_" + role.name()));
     }
 
     @Override

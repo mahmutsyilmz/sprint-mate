@@ -1,6 +1,7 @@
 package com.yilmaz.sprintmate.modules.board.entity;
 
 import com.yilmaz.sprintmate.modules.ai.entity.SystemPrompt;
+import com.yilmaz.sprintmate.modules.board.enums.TeamStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
@@ -29,8 +30,9 @@ public class Team {
     @JoinColumn(name = "prompt_id")
     private SystemPrompt prompt;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
-    private String status; // LOBBY, GENERATING, IN_SPRINT, COMPLETED, ABANDONED
+    private TeamStatus status;
 
     @Column(name = "ai_project_story", columnDefinition = "NVARCHAR(MAX)")
     private String aiProjectStory; // JSON format

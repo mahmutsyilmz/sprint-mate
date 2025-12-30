@@ -1,4 +1,4 @@
-package com.yilmaz.sprintmate.common.config;
+package com.yilmaz.sprintmate.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
